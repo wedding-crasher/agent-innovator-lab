@@ -90,15 +90,5 @@ async def fetch_content(url: str, ctx: Context) -> str:
         await ctx.error(str(e))
         return "Failed to fetch content."
 
-@mcp.tool()
-async def json_format(obj: str, ctx: Context) -> str:
-    await ctx.info("Formatting JSON")
-    try:
-        parsed = json.loads(obj)
-        return formatter.format_json(parsed)
-    except Exception as e:
-        await ctx.error(str(e))
-        return "Invalid JSON input."
-
 if __name__ == "__main__":
     asyncio.run(mcp.run_streamable_http_async())
